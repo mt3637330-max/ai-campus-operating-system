@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Timetable</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f4f6f9;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 25px 30px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+            padding: 14px;
+        }
+
+        td {
+            padding: 14px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f1f5f9;
+        }
+
+        .break {
+            background: #fff3cd;
+            font-weight: bold;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background: #555;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📅 Student Timetable</h1>
+    <p>AI Campus Operating System</p>
+</header>
+
+<div class="container">
+
+    <div class="box">
+
+        <h2>Weekly Class Timetable</h2>
+
+        <table>
+
+            <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr>
+
+            <tr>
+                <td>09:00 - 10:00</td>
+                <td>DSA</td>
+                <td>Python</td>
+                <td>DBMS</td>
+                <td>OOPS</td>
+                <td>DSA</td>
+                <td>Python</td>
+            </tr>
+
+            <tr>
+                <td>10:00 - 11:00</td>
+                <td>Python</td>
+                <td>DBMS</td>
+                <td>OOPS</td>
+                <td>DSA</td>
+                <td>Python</td>
+                <td>DBMS</td>
+            </tr>
+
+            <tr>
+                <td>11:00 - 12:00</td>
+                <td>DBMS</td>
+                <td>OOPS</td>
+                <td>DSA</td>
+                <td>Python</td>
+                <td>DBMS</td>
+                <td>OOPS</td>
+            </tr>
+
+            <tr class="break">
+                <td>12:00 - 01:00</td>
+                <td colspan="6">🍴 Lunch Break</td>
+            </tr>
+
+            <tr>
+                <td>01:00 - 02:00</td>
+                <td>OOPS</td>
+                <td>DSA</td>
+                <td>Python</td>
+                <td>DBMS</td>
+                <td>OOPS</td>
+                <td>DSA</td>
+            </tr>
+
+            <tr>
+                <td>02:00 - 03:00</td>
+                <td>DBMS Lab</td>
+                <td>Python Lab</td>
+                <td>DSA</td>
+                <td>OOPS Lab</td>
+                <td>Project</td>
+                <td>Project</td>
+            </tr>
+
+            <tr>
+                <td>03:00 - 04:00</td>
+                <td>Project</td>
+                <td>DSA</td>
+                <td>Python</td>
+                <td>DBMS</td>
+                <td>Project</td>
+                <td>Seminar</td>
+            </tr>
+
+        </table>
+
+        <a class="back" href="/student">
+            ← Back to Student Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

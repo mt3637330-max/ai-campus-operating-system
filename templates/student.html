@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Student Dashboard - AI Campus</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 25px 30px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            margin-top: 8px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .welcome {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            margin-top: 0;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+            text-decoration: none;
+            color: #222;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .icon {
+            font-size: 40px;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        .attendance {
+            border-left: 5px solid #16a34a;
+        }
+
+        .marks {
+            border-left: 5px solid #7c3aed;
+        }
+
+        .assignment {
+            border-left: 5px solid #ea580c;
+        }
+
+        .notice {
+            border-left: 5px solid #dc2626;
+        }
+
+        .timetable {
+            border-left: 5px solid #0891b2;
+        }
+
+        .ai {
+            border-left: 5px solid #2563eb;
+        }
+
+        .performance {
+            border-left: 5px solid #0f766e;
+        }
+
+        .logout {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 22px;
+            background: #555;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        @media (max-width: 700px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>🎓 Student Dashboard</h1>
+
+    <p>AI Campus Operating System</p>
+
+</header>
+
+
+<div class="container">
+
+
+    <div class="welcome">
+
+        <h2>Welcome, Student 👋</h2>
+
+        <p>
+            Manage your academic information from one place.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+
+        <!-- ATTENDANCE -->
+
+        <a href="/attendance" class="card attendance">
+
+            <div class="icon">📊</div>
+
+            <h3>Attendance</h3>
+
+            <p>
+                Check your attendance and present/absent records.
+            </p>
+
+        </a>
+
+
+        <!-- MARKS -->
+
+        <a href="/marks" class="card marks">
+
+            <div class="icon">📚</div>
+
+            <h3>Marks</h3>
+
+            <p>
+                View your subject-wise marks and grades.
+            </p>
+
+        </a>
+
+
+        <!-- ASSIGNMENTS -->
+
+        <a href="/assignments" class="card assignment">
+
+            <div class="icon">📝</div>
+
+            <h3>Assignments</h3>
+
+            <p>
+                Check assignments, topics, due dates and status.
+            </p>
+
+        </a>
+
+
+        <!-- NOTICES -->
+
+        <a href="/notices" class="card notice">
+
+            <div class="icon">📢</div>
+
+            <h3>Notice</h3>
+
+            <p>
+                View important college notices and announcements.
+            </p>
+
+        </a>
+
+
+        <!-- TIMETABLE -->
+
+        <a href="/timetable" class="card timetable">
+
+            <div class="icon">🗓️</div>
+
+            <h3>Timetable</h3>
+
+            <p>
+                Check your weekly class timetable.
+            </p>
+
+        </a>
+
+
+        <!-- AI ASSISTANT -->
+
+        <a href="/ai-assistant" class="card ai">
+
+            <div class="icon">🤖</div>
+
+            <h3>AI Assistant</h3>
+
+            <p>
+                Ask questions about attendance, marks, assignments and academics.
+            </p>
+
+        </a>
+
+
+        <!-- PERFORMANCE REPORT -->
+
+        <a href="/performance-report" class="card performance">
+
+            <div class="icon">📈</div>
+
+            <h3>Performance Report</h3>
+
+            <p>
+                View attendance, marks, assignments and overall performance.
+            </p>
+
+        </a>
+
+
+    </div>
+
+
+    <!-- LOGOUT -->
+
+    <a href="/" class="logout">
+        Logout
+    </a>
+
+
+</div>
+
+
+</body>
+
+</html>

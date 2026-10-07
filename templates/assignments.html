@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Assignments</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f4f6f9;
+        }
+
+        header {
+            background: #ea580c;
+            color: white;
+            padding: 25px 30px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .summary {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .number {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ea580c;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        th {
+            background: #ea580c;
+            color: white;
+            padding: 13px;
+            text-align: left;
+        }
+
+        td {
+            padding: 13px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .pending {
+            color: red;
+            font-weight: bold;
+        }
+
+        .submitted {
+            color: green;
+            font-weight: bold;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background: #555;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📝 Student Assignments</h1>
+    <p>AI Campus Operating System</p>
+</header>
+
+<div class="container">
+
+    <!-- SUMMARY -->
+    <div class="summary">
+
+        <div class="card">
+            <h3>Total Assignments</h3>
+            <div class="number">4</div>
+        </div>
+
+        <div class="card">
+            <h3>Pending</h3>
+            <div class="number">2</div>
+        </div>
+
+        <div class="card">
+            <h3>Submitted</h3>
+            <div class="number">2</div>
+        </div>
+
+    </div>
+
+
+    <!-- ASSIGNMENT TABLE -->
+    <div class="box">
+
+        <h2>📚 Assignment List</h2>
+
+        <table>
+
+            <tr>
+                <th>Assignment</th>
+                <th>Subject</th>
+                <th>Due Date</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>DSA Assignment 1</td>
+                <td>Data Structures</td>
+                <td>05 October 2026</td>
+                <td class="pending">Pending</td>
+            </tr>
+
+            <tr>
+                <td>Python Assignment</td>
+                <td>Python</td>
+                <td>08 October 2026</td>
+                <td class="submitted">Submitted</td>
+            </tr>
+
+            <tr>
+                <td>DBMS Assignment</td>
+                <td>DBMS</td>
+                <td>10 October 2026</td>
+                <td class="pending">Pending</td>
+            </tr>
+
+            <tr>
+                <td>OOPS Assignment</td>
+                <td>OOPS</td>
+                <td>12 October 2026</td>
+                <td class="submitted">Submitted</td>
+            </tr>
+
+        </table>
+
+        <a class="back" href="/student">
+            ← Back to Student Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

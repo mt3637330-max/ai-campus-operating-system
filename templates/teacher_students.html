@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Information - AI Campus</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            color: #222;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #16a34a;
+            color: white;
+            padding: 25px 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            max-width: 1150px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        /* TOP BOX */
+
+        .top-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            margin-bottom: 25px;
+        }
+
+        .top-box h2 {
+            margin: 0 0 8px;
+        }
+
+        .top-box p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        /* TABLE BOX */
+
+        .table-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            overflow-x: auto;
+        }
+
+        .table-box h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        th {
+            background: #16a34a;
+            color: white;
+            padding: 14px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #ddd;
+            font-size: 15px;
+        }
+
+        tr:hover {
+            background: #f3fdf5;
+        }
+
+        /* ATTENDANCE */
+
+        .attendance {
+            font-weight: bold;
+            color: #16a34a;
+        }
+
+        /* MARKS */
+
+        .marks {
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        /* BACK BUTTON */
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            background: #555;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            text-decoration: none;
+        }
+
+        .back:hover {
+            background: #333;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            text-align: center;
+            color: #777;
+            margin-top: 30px;
+            padding-bottom: 20px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 12px;
+            }
+
+            header {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 23px;
+            }
+
+            .top-box,
+            .table-box {
+                padding: 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <h1>👨‍🎓 Student Information</h1>
+
+    <p>
+        AI Campus Operating System
+    </p>
+
+</header>
+
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+
+    <!-- INTRODUCTION -->
+
+    <div class="top-box">
+
+        <h2>
+            Student List
+        </h2>
+
+        <p>
+            Teacher can view student academic information,
+            attendance and marks from this page.
+        </p>
+
+    </div>
+
+
+
+    <!-- STUDENT TABLE -->
+
+    <div class="table-box">
+
+        <h2>
+            📋 All Students
+        </h2>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Name
+                    </th>
+
+                    <th>
+                        Roll Number
+                    </th>
+
+                    <th>
+                        Course
+                    </th>
+
+                    <th>
+                        Attendance
+                    </th>
+
+                    <th>
+                        Marks
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                {% for student in students %}
+
+                <tr>
+
+                    <td>
+                        {{ student.name }}
+                    </td>
+
+                    <td>
+                        {{ student.roll }}
+                    </td>
+
+                    <td>
+                        {{ student.course }}
+                    </td>
+
+                    <td class="attendance">
+                        {{ student.attendance }}
+                    </td>
+
+                    <td class="marks">
+                        {{ student.marks }}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+
+            </tbody>
+
+        </table>
+
+
+
+        <!-- BACK BUTTON -->
+
+        <a href="/teacher" class="back">
+            ← Back to Teacher Dashboard
+        </a>
+
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        AI Campus Operating System © 2026
+
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Study Notes | AI Campus</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #172033;
+            --muted: #69758b;
+            --line: #e4e9f1;
+            --green: #16845b;
+            --green-dark: #106b49;
+            --mint: #eaf7f1;
+            --surface: #ffffff;
+            --canvas: #f5f7fb;
+            --shadow: 0 20px 55px rgba(31, 48, 78, 0.09);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            color: var(--ink);
+            background:
+                radial-gradient(ellipse at 88% 5%, rgba(91, 191, 147, 0.13), transparent 28rem),
+                var(--canvas);
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px max(24px, calc((100% - 1160px) / 2));
+            border-bottom: 1px solid rgba(228, 233, 241, 0.85);
+            background: rgba(255, 255, 255, 0.84);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            font-weight: 750;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            border-radius: 12px;
+            color: #fff;
+            background: linear-gradient(145deg, #1e9b6c, #10704c);
+            box-shadow: 0 6px 14px rgba(22, 132, 91, 0.2);
+        }
+
+        .topbar a {
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 650;
+            text-decoration: none;
+        }
+
+        .topbar a:hover {
+            color: var(--green-dark);
+        }
+
+        main {
+            width: min(100% - 40px, 1040px);
+            margin: 52px auto 70px;
+        }
+
+        .intro {
+            max-width: 680px;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            color: var(--green-dark);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #35b77f;
+            content: "";
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(32px, 5vw, 46px);
+            letter-spacing: -0.055em;
+            line-height: 1.1;
+        }
+
+        .intro p {
+            margin: 14px 0 0;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 290px;
+            gap: 22px;
+            align-items: start;
+        }
+
+        .panel,
+        .side-card {
+            border: 1px solid rgba(228, 233, 241, 0.9);
+            border-radius: 20px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .panel {
+            padding: clamp(22px, 4vw, 36px);
+        }
+
+        .panel-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .heading-icon {
+            display: grid;
+            flex: 0 0 46px;
+            width: 46px;
+            height: 46px;
+            place-items: center;
+            border-radius: 14px;
+            color: var(--green-dark);
+            background: var(--mint);
+            font-size: 21px;
+        }
+
+        .panel-heading h2 {
+            margin: 1px 0 5px;
+            font-size: 19px;
+            letter-spacing: -0.025em;
+        }
+
+        .panel-heading p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 16px;
+            padding-top: 25px;
+        }
+
+        .field {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .field-wide {
+            grid-column: 1 / -1;
+        }
+
+        label,
+        .field-label {
+            color: #303b50;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .required {
+            color: #cf5360;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            min-height: 46px;
+            padding: 11px 13px;
+            border: 1px solid #dce3ed;
+            border-radius: 10px;
+            outline: none;
+            color: var(--ink);
+            background: #fff;
+            font: inherit;
+            font-size: 14px;
+            transition: border-color 160ms ease, box-shadow 160ms ease;
+        }
+
+        textarea {
+            min-height: 96px;
+            resize: vertical;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #41a77b;
+            box-shadow: 0 0 0 3px rgba(41, 157, 108, 0.12);
+        }
+
+        .dropzone {
+            position: relative;
+            display: grid;
+            min-height: 170px;
+            place-items: center;
+            padding: 22px;
+            border: 1.5px dashed #b9ccbf;
+            border-radius: 14px;
+            background: linear-gradient(180deg, #fbfefc, #f6fbf8);
+            text-align: center;
+            transition: border-color 160ms ease, background 160ms ease;
+        }
+
+        .dropzone:hover,
+        .dropzone:focus-within {
+            border-color: var(--green);
+            background: #f1faf5;
+        }
+
+        .dropzone input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            clip-path: inset(50%);
+        }
+
+        .upload-icon {
+            display: grid;
+            width: 43px;
+            height: 43px;
+            margin: 0 auto 10px;
+            place-items: center;
+            border-radius: 13px;
+            color: var(--green-dark);
+            background: #e2f4ea;
+            font-size: 21px;
+        }
+
+        .dropzone strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .dropzone span,
+        .dropzone small {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .browse {
+            color: var(--green-dark);
+            font-weight: 750;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .file-name {
+            min-height: 18px;
+            margin-top: 6px;
+            color: var(--green-dark);
+            font-size: 12px;
+            font-weight: 650;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 25px;
+            padding-top: 22px;
+            border-top: 1px solid var(--line);
+        }
+
+        .privacy-note {
+            max-width: 320px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.55;
+        }
+
+        .submit-button {
+            min-height: 46px;
+            padding: 0 20px;
+            border: 0;
+            border-radius: 10px;
+            color: #fff;
+            background: linear-gradient(135deg, #1a9665, #11714d);
+            box-shadow: 0 7px 16px rgba(22, 132, 91, 0.2);
+            cursor: pointer;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 750;
+            transition: transform 160ms ease, box-shadow 160ms ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(22, 132, 91, 0.25);
+        }
+
+        .side-card {
+            padding: 22px;
+            box-shadow: 0 12px 35px rgba(31, 48, 78, 0.06);
+        }
+
+        .side-card h2 {
+            margin: 0 0 18px;
+            font-size: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .step {
+            display: flex;
+            gap: 12px;
+            padding: 14px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .step-number {
+            display: grid;
+            flex: 0 0 27px;
+            width: 27px;
+            height: 27px;
+            place-items: center;
+            border-radius: 9px;
+            color: var(--green-dark);
+            background: var(--mint);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .step strong {
+            display: block;
+            margin: 2px 0 4px;
+            font-size: 12px;
+        }
+
+        .step p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .format-note {
+            margin-top: 8px;
+            padding: 13px;
+            border-radius: 11px;
+            color: #466152;
+            background: #f1f8f3;
+            font-size: 11px;
+            line-height: 1.55;
+        }
+
+        .format-note strong {
+            display: block;
+            margin-bottom: 3px;
+            color: #27573e;
+        }
+
+        .status {
+            min-height: 18px;
+            margin: 15px 0 0;
+            color: var(--green-dark);
+            font-size: 13px;
+            font-weight: 650;
+        }
+
+        @media (max-width: 760px) {
+            main {
+                margin-top: 36px;
+            }
+
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .topbar {
+                padding: 14px 18px;
+            }
+
+            main {
+                width: min(100% - 24px, 1040px);
+                margin-top: 28px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .field-wide {
+                grid-column: auto;
+            }
+
+            .actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .submit-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">A</span>
+            <span>AI Campus <span style="color: #8a95a8; font-weight: 500;">/ Learning Hub</span></span>
+        </div>
+        <a href="/teacher">← Teacher dashboard</a>
+    </header>
+
+    <main>
+        <section class="intro">
+            <div class="eyebrow">Teacher workspace</div>
+            <h1>Share notes that make<br>learning click.</h1>
+            <p>Organize your course materials and make them easy for students to find.</p>
+        </section>
+
+        <div class="workspace">
+            <section class="panel" aria-labelledby="upload-heading">
+                <div class="panel-heading">
+                    <div class="heading-icon" aria-hidden="true">↥</div>
+                    <div>
+                        <h2 id="upload-heading">Add new study notes</h2>
+                        <p>Complete the details below and select a file to share.</p>
+                    </div>
+                </div>
+
+                <form id="notes-form">
+                    <div class="form-grid">
+                        <div class="field field-wide">
+                            <label for="note-title">Note title <span class="required">*</span></label>
+                            <input id="note-title" name="title" type="text" placeholder="e.g. Introduction to Data Structures" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="subject">Subject <span class="required">*</span></label>
+                            <select id="subject" name="subject" required>
+                                <option value="" selected disabled>Select a subject</option>
+                                <option>Computer Science</option>
+                                <option>Mathematics</option>
+                                <option>Physics</option>
+                                <option>Data Structures</option>
+                                <option>Database Management</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="class-group">Class or group <span class="required">*</span></label>
+                            <select id="class-group" name="class_group" required>
+                                <option value="" selected disabled>Select a class</option>
+                                <option>Year 1</option>
+                                <option>Year 2</option>
+                                <option>Year 3</option>
+                                <option>Year 4</option>
+                                <option>All students</option>
+                            </select>
+                        </div>
+
+                        <div class="field field-wide">
+                            <label for="description">Short description <span style="color: #8a95a8; font-weight: 500;">(optional)</span></label>
+                            <textarea id="description" name="description" placeholder="Add a brief summary so students know what these notes cover."></textarea>
+                        </div>
+
+                        <div class="field field-wide">
+                            <span class="field-label">Notes file <span class="required">*</span></span>
+                            <label class="dropzone" for="notes-file">
+                                <span>
+                                    <span class="upload-icon" aria-hidden="true">↑</span>
+                                    <strong>Drop your file here or <span class="browse">browse files</span></strong>
+                                    <span>Choose a PDF, Word document, or presentation</span><br>
+                                    <small>Maximum file size: 20 MB</small>
+                                </span>
+                                <input id="notes-file" name="file" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx" required>
+                            </label>
+                            <div id="file-name" class="file-name" aria-live="polite"></div>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <p class="privacy-note">Only share material intended for your selected class. This page is a frontend preview; file saving is not connected.</p>
+                        <button class="submit-button" type="submit">Upload notes <span aria-hidden="true">→</span></button>
+                    </div>
+                    <p class="status" id="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </section>
+
+            <aside class="side-card" aria-labelledby="steps-heading">
+                <h2 id="steps-heading">A few helpful tips</h2>
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div>
+                        <strong>Use a clear title</strong>
+                        <p>Help students recognize the topic at a glance.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div>
+                        <strong>Choose the right class</strong>
+                        <p>Make sure the material reaches the intended group.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div>
+                        <strong>Keep files easy to read</strong>
+                        <p>Use descriptive file names and legible scans.</p>
+                    </div>
+                </div>
+                <div class="format-note">
+                    <strong>Supported formats</strong>
+                    PDF, DOC, DOCX, PPT, and PPTX files up to 20 MB.
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <script>
+        const fileInput = document.getElementById("notes-file");
+        const fileName = document.getElementById("file-name");
+        const form = document.getElementById("notes-form");
+        const status = document.getElementById("form-status");
+
+        fileInput.addEventListener("change", () => {
+            fileName.textContent = fileInput.files.length
+                ? `Selected: ${fileInput.files[0].name}`
+                : "";
+            status.textContent = "";
+        });
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            status.textContent = "This frontend preview does not save files yet.";
+        });
+    </script>
+</body>
+</html>

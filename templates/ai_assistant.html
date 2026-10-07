@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>AI Campus Assistant</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f6f9;
+        }
+
+        header {
+            background: #4f46e5;
+            color: white;
+            padding: 25px 30px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .chat-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+
+        .welcome {
+            background: #eef2ff;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            margin-top: 0;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 15px 25px;
+            border: none;
+            background: #4f46e5;
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #3730a3;
+        }
+
+        .answer {
+            margin-top: 25px;
+            padding: 20px;
+            background: #ecfdf5;
+            border-left: 5px solid #16a34a;
+            border-radius: 8px;
+        }
+
+        .answer h3 {
+            margin-top: 0;
+        }
+
+        .questions {
+            margin-top: 30px;
+        }
+
+        .question {
+            display: inline-block;
+            background: #eef2ff;
+            color: #3730a3;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 20px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 20px;
+            background: #555;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>🤖 AI Campus Assistant</h1>
+
+    <p>AI Campus Operating System</p>
+
+</header>
+
+
+<div class="container">
+
+    <div class="chat-box">
+
+        <div class="welcome">
+
+            <h2>👋 Hello Student!</h2>
+
+            <p>
+                I am your AI Campus Assistant.
+                Ask me about your attendance, marks,
+                assignments, timetable, notices or studies.
+            </p>
+
+        </div>
+
+
+        <form method="POST" action="/ai-assistant">
+
+            <input
+                type="text"
+                name="question"
+                placeholder="Ask your question..."
+                required
+            >
+
+            <button type="submit">
+                Ask
+            </button>
+
+        </form>
+
+
+        {% if answer %}
+
+        <div class="answer">
+
+            <h3>🤖 AI Assistant</h3>
+
+            <p>{{ answer }}</p>
+
+        </div>
+
+        {% endif %}
+
+
+        <div class="questions">
+
+            <h3>💡 Try asking:</h3>
+
+            <span class="question">My attendance?</span>
+
+            <span class="question">My marks?</span>
+
+            <span class="question">Pending assignments?</span>
+
+            <span class="question">My timetable?</span>
+
+            <span class="question">Latest notices?</span>
+
+            <span class="question">My performance?</span>
+
+            <span class="question">My profile?</span>
+
+            <span class="question">What is Python?</span>
+
+            <span class="question">What is DSA?</span>
+
+            <span class="question">What is DBMS?</span>
+
+            <span class="question">What is OOPS?</span>
+
+        </div>
+
+
+        <a class="back" href="/student">
+
+            ← Back to Student Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Campus Operating System</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+        }
+
+        header {
+            background: #4f46e5;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+
+        .login-options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .option {
+            flex: 1;
+            min-width: 220px;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 45px;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 95%;
+            padding: 12px;
+            margin-top: 8px;
+            border: none;
+            border-radius: 7px;
+            background: #4f46e5;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #3730a3;
+        }
+
+        .other {
+            background: #059669;
+        }
+
+        .other:hover {
+            background: #047857;
+        }
+
+        h2 {
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎓 AI Campus Operating System</h1>
+    <p>Welcome to Campus Management System</p>
+</header>
+
+<div class="container">
+
+    <div class="login-box">
+
+        <h2 style="text-align:center;">Choose Login Type</h2>
+        <p style="text-align:center;">Select your account to continue</p>
+
+        <div class="login-options">
+
+            <!-- STUDENT LOGIN -->
+
+            <div class="option">
+
+                <div class="icon">🎓</div>
+
+                <h2>Student Login</h2>
+
+                <p>Login as a Student</p>
+
+                <form action="/login" method="POST">
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Student Username"
+                        required
+                    >
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        required
+                    >
+
+                    <button type="submit">
+                        Student Login
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- TEACHER LOGIN -->
+
+            <div class="option">
+
+                <div class="icon">👨‍🏫</div>
+
+                <h2>Teacher Login</h2>
+
+                <p>Login as a Teacher</p>
+
+                <form action="/login" method="POST">
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Teacher Username"
+                        required
+                    >
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        required
+                    >
+
+                    <button type="submit">
+                        Teacher Login
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- OTHER PERSON LOGIN -->
+
+            <div class="option">
+
+                <div class="icon">👤</div>
+
+                <h2>Other Person Login</h2>
+
+                <p>For other users</p>
+
+                <form action="/login" method="POST">
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        required
+                    >
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        required
+                    >
+
+                    <button class="other" type="submit">
+                        Other Login
+                    </button>
+                    <a href="/register"
+style="
+display:block;
+margin-top:12px;
+text-decoration:none;
+color:#059669;
+font-weight:bold;
+">
+New User? Register Here
+</a>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
